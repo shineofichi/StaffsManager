@@ -1,0 +1,31 @@
+{
+  "name": "staffmanager",
+  "version": "1.0.0",
+  "description": "NodeJSASM1-StaffManager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shineofichi/StaffsManager.git"
+  },
+  "author": "Anhtt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shineofichi/StaffsManager/issues"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"},
+  "homepage": "https://github.com/shineofichi/StaffsManager#readme",
+  "dependencies": {
+  "body-parser": "^1.18.3",
+  "ejs": "^2.6.1",
+  "express": "^4.16.3",
+  "mongodb": "^4.4.1",
+  "mysql2": "^2.3.3",
+  "sequelize": "^6.17.0"
+  }
+}

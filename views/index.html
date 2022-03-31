@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <title>Temp</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">NJS101X</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Điểm danh<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Thông tin cá nhân</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Thông tin giờ làm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Thông tin Covid</a>
+                </li>
+            </ul>
+        </div>
+        <div class="my-2 my-lg-0">
+            <p>Tên nhân viên</p>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <form action="/" method="POST">
+                <div class="form-group">
+                    <label for="name">Tên</label>
+                    <input type="text" class="form-control" id="name" value="Tên nhân viên" readonly></input>
+                </div>
+                <div class="form-group">
+                    <label for="location">Địa điểm làm việc</label>
+                    <select class="form-control" id="location">
+                        <option>Nhà</option>
+                        <option selected>Công ty</option>
+                        <option>Khách hàng</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Bắt đầu" class="btn btn-success"></input>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <form action="/" method="POST">
+                <div class="form-group">
+                    <input type="submit" value="Kết thúc" class="btn btn-danger"></input>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            <form action="/" method="POST">
+                <div class="form-group">
+                    <label for="registered-date">Chọn ngày nghỉ</label>
+                    <input type="date" class="form-control" id="registered-date"></input>
+                </div>
+                <div class="form-group">
+                    <label for="reason">Lý do</label>
+                    <textarea type="text" class="form-control" id="reason" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="registered-hour">Số giờ nghỉ</label>
+                    <select class="form-control" id="registered-hour">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="annual-leave">Số giờ còn lại</label>
+                    <input type="text" class="form-control" id="annual-leave" rows="8" value="Số giờ còn lại"
+                        readonly></input>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Đăng ký" class="btn btn-primary"></input>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <form action="/" method="POST">
+                <div class="form-group">
+                    <label for="name">Tên nhân viên</label>
+                    <input type="text" class="form-control" id="name" value="Tên nhân viên" readonly></input>
+                </div>
+                <div class="form-group">
+                    <label for="id">Mã nhân viên</label>
+                    <input type="text" class="form-control" id="id" value="Mã nhân viên" readonly></input>
+                </div>
+                <div class="form-group">
+                    <label for="doB">Ngày sinh</label>
+                    <input type="text" class="form-control" id="doB" value="Ngày sinh" readonly></input>
+                </div>
+                <div class="form-group">
+                    <label for="salaryScale">Hệ số lương</label>
+                    <input type="text" class="form-control" id="salaryScale" value="Hệ số lương" readonly></input>
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Ngày nhập công ty</label>
+                    <input type="text" class="form-control" id="startDate" value="Ngày nhập công ty" readonly></input>
+                </div>
+                <div class="form-group">
+                    <label for="department">Phòng ban</label>
+                    <input type="text" class="form-control" id="department" value="Phòng ban" readonly></input>
+                </div>
+                <div class="form-group">
+                    <label for="annualLeave">Số ngày phép</label>
+                    <input type="text" class="form-control" id="annualLeave" value="Số ngày phép" readonly></input>
+                </div>
+                <div class="form-group">
+                    <label for="image">Ảnh</label>
+                    <input type="file" class="form-control-file" id="image">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Cập nhật" class="btn btn-primary"></input>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="memo">Memo</label>
+                    <textarea class="form-control" id="memo" rows="8"></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="Lưu" class="btn btn-outline-primary"></input>
+                </div>
+            </form>
+        </div>
+    </footer>
+</body>
+
+</html>
