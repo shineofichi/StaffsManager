@@ -49,24 +49,40 @@
 
     <div class="container">
         <div class="row">
-            <form action="/" method="POST">
-                <div class="form-group">
-                    <label for="name">Tên</label>
-                    <input type="text" class="form-control" id="name" value="Tên nhân viên" readonly></input>
+            <div class="col-12 col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            Checkin
+                        </h3>
+                        <form action="/" method="POST">
+                            <div class="form-group">
+                                <label for="name">Tên</label>
+                                <input type="text" class="form-control" id="name" value="Tên nhân viên"
+                                    readonly></input>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Địa điểm làm việc</label>
+                                <select class="form-control" id="location">
+                                    <option>Nhà</option>
+                                    <option selected>Công ty</option>
+                                    <option>Khách hàng</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Bắt đầu" class="btn btn-success"></input>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="location">Địa điểm làm việc</label>
-                    <select class="form-control" id="location">
-                        <option>Nhà</option>
-                        <option selected>Công ty</option>
-                        <option>Khách hàng</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Bắt đầu" class="btn btn-success"></input>
-                </div>
-            </form>
+            </div>
+
+
         </div>
+
+
+
+
         <div class="row">
             <form action="/" method="POST">
                 <div class="form-group">
