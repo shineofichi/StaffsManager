@@ -1,23 +1,52 @@
 <%- include('../includes/head.ejs') %>
     <div class="container">
         <div class="row">
-        <div class="card">
-            <form action="/checkin" method="POST">
-                <div class="form-group">
-                    <label for="name">Tên</label>
-                    <input type="text" class="form-control" id="name" value="<%= user.name%>" readonly>
+            <% if (isWorking) {%>
+                <div class="col-12 col-lg-12">
+                    <div class="card">
+                        <h3 class="card-title">Thông tin trạng thái làm việc</h3>
+                        <h5>Trạng thái: Đang làm việc</h5> 
+                        <h5>Giờ bắt đầu làm việc : <%= timeRecord.startTime%></h5>
+                        <form action="/checkout" method="POST">
+                            <div class="form-group">
+                                <label for="name">Tên</label>
+                                <input type="text" class="form-control" id="name" value="<%= user.name%>" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Địa điểm làm việc</label>
+                                <input class="form-control" id="location" value="<%= timeRecord.location%>" readonly>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Kết thúc" class="btn btn-danger">
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="location">Địa điểm làm việc</label>
-                    <select class="form-control" id="location">
-                        <option>Nhà</option>
-                        <option selected>Công ty</option>
-                        <option>Khách hàng</option>
-                    </select>
+            <%} else {%>
+                <div class="col-12 col-lg-12">
+                <div class="card">
+                    <h3 class="card-title">Điểm danh</h3>
+                    <h5>Trạng thái: Offline</h5> 
+                    <form action="/checkin" method="POST">
+                        <div class="form-group">
+                            <label for="name">Tên</label>
+                            <input type="text" class="form-control" id="name" value="<%= user.name%>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Địa điểm làm việc</label>
+                            <select class="form-control" id="location">
+                                <option>Nhà</option>
+                                <option selected>Công ty</option>
+                                <option>Khách hàng</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Bắt đầu" class="btn btn-success">
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Bắt đầu" class="btn btn-success">
-                </div>
-            </form>
+            </div>
+            <%}%>
         </div>
+    </div>
 <%- include('../includes/footer.ejs') %>
