@@ -18,7 +18,17 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/main.css">
     <title><%= pageTitle %></title>
-    <script src="./utils/timer.js"></script>
+    <script >
+        function Timer() {
+            const hour = document.getElementById("hour");
+            const minute = document.getElementById("minute");
+            const hourTime = new Date().getHours();
+            const minTime = new Date().getMinutes();
+            hour.innerHTML = hourTime;
+            minute.innerHTML = minTime;
+            }
+        const timer = setInterval(Timer, 1000);
+    </script>
 </head>
 
 <body>
