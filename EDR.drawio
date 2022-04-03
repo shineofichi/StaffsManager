@@ -134,12 +134,12 @@
                         <mxRectangle width="30" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="yQBuFcYj-_OJ-jstWfvQ-3" value="isAdmin: BOOLEAN" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="yQBuFcYj-_OJ-jstWfvQ-1" vertex="1">
+                <mxCell id="yQBuFcYj-_OJ-jstWfvQ-3" value="isAdmin: BOOLEAN NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="yQBuFcYj-_OJ-jstWfvQ-1" vertex="1">
                     <mxGeometry x="30" width="230" height="30" as="geometry">
                         <mxRectangle width="230" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="-r2vnZRNIly4i_aVBOxP-66" value="Working_Time_Records" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;" parent="1" vertex="1">
+                <mxCell id="-r2vnZRNIly4i_aVBOxP-66" value="Working_Time" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;" parent="1" vertex="1">
                     <mxGeometry x="455" y="12" width="230" height="210" as="geometry">
                         <mxRectangle x="370" y="16" width="110" height="30" as="alternateBounds"/>
                     </mxGeometry>
@@ -222,7 +222,7 @@
                         <mxRectangle width="200" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="-r2vnZRNIly4i_aVBOxP-180" value="Covid_Records" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;" parent="1" vertex="1">
+                <mxCell id="-r2vnZRNIly4i_aVBOxP-180" value="Covid" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;" parent="1" vertex="1">
                     <mxGeometry x="455" y="427" width="230" height="180" as="geometry">
                         <mxRectangle x="50" y="30" width="70" height="30" as="alternateBounds"/>
                     </mxGeometry>
@@ -367,7 +367,7 @@
                         <mxPoint x="410" y="185.9999999999999" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="-r2vnZRNIly4i_aVBOxP-249" value="Annual_Leave_Records" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;" parent="1" vertex="1">
+                <mxCell id="-r2vnZRNIly4i_aVBOxP-249" value="Annual_Leave" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;" parent="1" vertex="1">
                     <mxGeometry x="455" y="231" width="230" height="180" as="geometry">
                         <mxRectangle x="410" y="30" width="110" height="30" as="alternateBounds"/>
                     </mxGeometry>
