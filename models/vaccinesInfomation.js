@@ -17,4 +17,4 @@ const vaccineSchema = new Schema({
   },
 });
 
-module.exports = mongoose.module("Vaccine", vaccineSchema);
+module.exports = mongoose.model("Vaccine", vaccineSchema);

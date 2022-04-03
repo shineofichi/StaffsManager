@@ -21,4 +21,4 @@ const covidSchema = new Schema({
   },
 });
 
-module.exports = mongoose.module("Covid", covidSchema);
+module.exports = mongoose.model("Covid", covidSchema);

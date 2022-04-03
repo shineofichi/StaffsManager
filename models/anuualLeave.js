@@ -21,4 +21,4 @@ const annualLeaveSchema = new Schema({
   },
 });
 
-module.exports = mongoose.module("AnnualLeave", annualLeaveSchema);
+module.exports = mongoose.model("AnnualLeave", annualLeaveSchema);

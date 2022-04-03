@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
-  User.findById("624307680f7d83ea44c7104d")
+  User.findById("62498e316776e2659d6a2549")
     .then((user) => {
       req.user = user;
       next();
@@ -29,7 +29,7 @@ app.use((req, res, next) => {
     });
 });
 
-app.use("/admin", user);
+app.use("/admin", userRoutes);
 app.use(homeRoutes);
 
 app.use(errorController.get404);
@@ -43,8 +43,15 @@ mongoose
       if (!user) {
         const user = new User({
           name: "AnhTT",
-          email: "anhttFX13476@funix.edu.vn",
-          cart: { items: [] },
+          doB: new Date().getDate(),
+          department: "IT",
+          salaryScale: 1.0,
+          startDate: new Date().getDate(),
+          annualLeave: 0,
+          imageUrl:
+            "https://recenthighlights.com/wp-content/uploads/2022/03/Luffy-Gear-5.jpg",
+          vaccineInfo: "6245c1c7c8db36a561adff72",
+          isAdmin: true,
         });
         user.save();
       }
