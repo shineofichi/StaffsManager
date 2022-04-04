@@ -10,4 +10,6 @@ const router = express.Router();
 
 router.get("/checkin", homeController.getHomepage);
 
+router.get("/working", homeController);
+
 module.exports = router;
