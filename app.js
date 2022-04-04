@@ -48,7 +48,7 @@ mongoose
           doB: new Date().getDate(),
           department: "IT",
           salaryScale: 1.0,
-          startDate: new Date().getDate(),
+          startDate: new Date(),
           annualLeave: 0,
           imageUrl:
             "https://recenthighlights.com/wp-content/uploads/2022/03/Luffy-Gear-5.jpg",

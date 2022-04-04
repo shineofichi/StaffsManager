@@ -34,8 +34,10 @@ exports.postCheckin = (req, res, next) => {
   checkinRecord
     .save()
     .then(() => {
+      return User.updateOne({ _id: userId }, { isWorking: true });
+    })
+    .then(() => {
       console.log("Checked In!");
-      User.updateOne({ _id: userId }, { isWorking: true });
     })
     .catch((err) => {
       console.log(err);
@@ -44,17 +46,26 @@ exports.postCheckin = (req, res, next) => {
 };
 
 exports.getCheckoutPage = (req, res, next) => {
-  res.render("working/checkout", {
-    pageTitle: "Kết thúc điểm danh",
-    path: "/working",
-    user: {
-      name: req.user.name,
-    },
-    timeRecord: {
-      startTime: "9:00",
-      location: "Công ty",
-    },
-  });
+  Checkin.find({ userId: req.user._id })
+    .then((checkin) => {
+      const timeStart = checkin[0].timeStart;
+      const location = checkin[0].location;
+      res.render("working/checkout", {
+        pageTitle: "Kết thúc điểm danh",
+        path: "/working",
+        user: {
+          name: req.user.name,
+          isWorking: req.user.isWorking,
+        },
+        timeRecord: {
+          timeStart: timeStart,
+          location: location,
+        },
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.postCheckout = (req, res, next) => {
@@ -76,12 +87,15 @@ exports.postCheckout = (req, res, next) => {
       return Checkin.deleteMany({ userId: req.user._id });
     })
     .then(() => {
+      return User.updateOne({ _id: req.user._id }, { isWorking: false });
+    })
+    .then(() => {
       console.log("Checkout!");
     })
     .catch((err) => {
       console.log(err);
     });
-  res.redirect("/working/checkout");
+  res.redirect("/working/checkin");
 };
 
 exports.getAnnualLeavePage = (req, res, next) => {
