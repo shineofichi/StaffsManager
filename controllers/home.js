@@ -1,24 +1,47 @@
-exports.getHomepage = (req, res, next) => {
-  res.render("checkinPage/checkin", {
-    pageTitle: "Checkin",
-    path: "/checkin",
+exports.getWorkingPage = (req, res, next) => {
+  res.render("working/index", {
+    pageTitle: "Điểm danh/Kết thúc giờ làm",
+    path: "/working",
     user: {
       name: req.user.name,
     },
   });
 };
 
-exports.getHomepage = (req, res, next) => {
-  res.render("checkinPage/checkout", {
-    pageTitle: "Checkout",
+exports.getCheckinPage = (req, res, next) => {
+  res.render("working/checkin", {
+    pageTitle: "Điểm danh",
     path: "/working",
     user: {
       name: req.user.name,
     },
-    isWorking: false,
-    // timeRecord: {
-    //   startTime: "9:00",
-    //   location: "Công ty",
-    // },
+  });
+};
+
+exports.getCheckoutPage = (req, res, next) => {
+  res.render("working/checkout", {
+    pageTitle: "Kết thúc điểm danh",
+    path: "/working",
+    user: {
+      name: req.user.name,
+    },
+    timeRecord: {
+      startTime: "9:00",
+      location: "Công ty",
+    },
+  });
+};
+
+exports.getAnnualLeavePage = (req, res, next) => {
+  res.render("working/checkout", {
+    pageTitle: "Kết thúc điểm danh",
+    path: "/working",
+    user: {
+      name: req.user.name,
+    },
+    timeRecord: {
+      startTime: "9:00",
+      location: "Công ty",
+    },
   });
 };

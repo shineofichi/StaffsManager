@@ -1,0 +1,28 @@
+<%- include('../includes/head.ejs') %>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="card">
+                    <h3 class="card-title">Đăng ký nghỉ phép</h3>
+                    <form action="/offine-registered" method="POST">
+                        <div class="form-group">
+                            <label for="date">Ngày: </label>
+                            <input type="date" class="form-control" id="date">
+                        </div>
+                        <div class="form-group">
+                            <label for="hours">Số giờ nghỉ: </label>
+                            <input type="number" class="form-control" id="hours">
+                        </div>
+                        <div class="form-group">
+                            <label for="reason">Lý do: </label>
+                            <textarea class="form-control" id="reason">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Bắt đầu" class="btn btn-success">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include('../includes/footer.ejs') %>
