@@ -47,83 +47,39 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            Checkin
-                        </h3>
-                        <form action="/" method="POST">
-                            <div class="form-group">
-                                <label for="name">Tên</label>
-                                <input type="text" class="form-control" id="name" value="Tên nhân viên"
-                                    readonly></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="location">Địa điểm làm việc</label>
-                                <select class="form-control" id="location">
-                                    <option>Nhà</option>
-                                    <option selected>Công ty</option>
-                                    <option>Khách hàng</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Bắt đầu" class="btn btn-success"></input>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <div class="row">
+        <form action="/" method="POST">
+            <div class="form-group">
+                <label for="registered-date">Chọn ngày nghỉ</label>
+                <input type="date" class="form-control" id="registered-date"></input>
             </div>
-
-
-        </div>
-
-
-
-
-        <div class="row">
-            <form action="/" method="POST">
-                <div class="form-group">
-                    <input type="submit" value="Kết thúc" class="btn btn-danger"></input>
-                </div>
-            </form>
-        </div>
-
-        <div class="row">
-            <form action="/" method="POST">
-                <div class="form-group">
-                    <label for="registered-date">Chọn ngày nghỉ</label>
-                    <input type="date" class="form-control" id="registered-date"></input>
-                </div>
-                <div class="form-group">
-                    <label for="reason">Lý do</label>
-                    <textarea type="text" class="form-control" id="reason" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="registered-hour">Số giờ nghỉ</label>
-                    <select class="form-control" id="registered-hour">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="annual-leave">Số giờ còn lại</label>
-                    <input type="text" class="form-control" id="annual-leave" rows="8" value="Số giờ còn lại"
-                        readonly></input>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Đăng ký" class="btn btn-primary"></input>
-                </div>
-            </form>
-        </div>
+            <div class="form-group">
+                <label for="reason">Lý do</label>
+                <textarea type="text" class="form-control" id="reason" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="registered-hour">Số giờ nghỉ</label>
+                <select class="form-control" id="registered-hour">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="annual-leave">Số giờ còn lại</label>
+                <input type="text" class="form-control" id="annual-leave" rows="8" value="Số giờ còn lại"
+                    readonly></input>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Đăng ký" class="btn btn-primary"></input>
+            </div>
+        </form>
+    </div>
     </div>
 
     <div class="container">
