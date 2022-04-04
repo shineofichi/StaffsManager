@@ -8,12 +8,12 @@ const router = express.Router();
 
 // router.get/post("{link}", {controler});
 
-router.get("/working/checkin", workingController.getCheckinPage);
+router.get("/checkin", workingController.getCheckinPage);
 
-router.get("/working/checkout", workingController.getCheckoutPage);
+router.get("/checkout", workingController.getCheckoutPage);
 
-router.get("/working/annualleave", workingController.getCheckoutPage);
+router.get("/annualleave", workingController.getAnnualLeavePage);
 
-router.get("/working", workingController.getWorkingPage);
+router.get("/", workingController.getWorkingPage);
 
 module.exports = router;

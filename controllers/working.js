@@ -33,7 +33,7 @@ exports.getCheckoutPage = (req, res, next) => {
 };
 
 exports.getAnnualLeavePage = (req, res, next) => {
-  res.render("working/checkout", {
+  res.render("working/annualleave", {
     pageTitle: "Kết thúc điểm danh",
     path: "/working",
     user: {

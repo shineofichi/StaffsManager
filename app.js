@@ -14,6 +14,7 @@ app.set("views", "views");
 
 const userRoutes = require("./routes/user");
 const homeRoutes = require("./routes/home");
+const workingRoutes = require("./routes/working");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -29,7 +30,8 @@ app.use((req, res, next) => {
     });
 });
 
-app.use("/admin", userRoutes);
+app.use("/user", userRoutes);
+app.use("/working", workingRoutes);
 app.use(homeRoutes);
 
 app.use(errorController.get404);
