@@ -8,6 +8,6 @@ const router = express.Router();
 
 // router.get/post("{link}", {controler});
 
-router.get("/", homeController.getHomepage);
+router.get("/checkin", homeController.getHomepage);
 
 module.exports = router;

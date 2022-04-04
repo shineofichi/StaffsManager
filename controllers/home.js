@@ -3,12 +3,12 @@ exports.getHomepage = (req, res, next) => {
     pageTitle: "Checkin",
     path: "/checkin",
     user: {
-      name: "AnhTT",
+      name: req.user.name,
     },
     isWorking: false,
-    timeRecord: {
-      startTime: "9:00",
-      location: "Công ty",
-    },
+    // timeRecord: {
+    //   startTime: "9:00",
+    //   location: "Công ty",
+    // },
   });
 };
