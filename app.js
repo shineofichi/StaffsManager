@@ -54,6 +54,7 @@ mongoose
             "https://recenthighlights.com/wp-content/uploads/2022/03/Luffy-Gear-5.jpg",
           vaccineInfo: "6245c1c7c8db36a561adff72",
           isAdmin: true,
+          isWorking: false,
         });
         user.save();
       }

@@ -6,7 +6,7 @@
                     <h3 class="card-title">Thông tin trạng thái làm việc</h3>
                     <h5>Trạng thái: Đang làm việc</h5> 
                     <h5>Giờ bắt đầu làm việc : <%= timeRecord.startTime%></h5>
-                    <form action="/checkout" method="POST">
+                    <form action="/working/post-checkout" method="POST">
                         <div class="form-group">
                             <label for="name">Tên</label>
                             <input type="text" class="form-control" id="name" value="<%= user.name%>" readonly>

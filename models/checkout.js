@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const workingTimeSchema = new Schema({
+const checkoutSchema = new Schema({
   timeStart: {
     type: Schema.Types.Date,
     required: true,
@@ -15,10 +15,10 @@ const workingTimeSchema = new Schema({
     type: String,
     required: true,
   },
-  isWorking: {
-    type: Boolean,
+  userId: {
+    type: Schema.Types.ObjectId,
     required: true,
   },
 });
 
-module.exports = mongoose.model("WorkingTime", workingTimeSchema);
+module.exports = mongoose.model("Checkout", checkoutSchema);

@@ -10,7 +10,11 @@ const router = express.Router();
 
 router.get("/checkin", workingController.getCheckinPage);
 
+router.post("/post-checkin", workingController.postCheckin);
+
 router.get("/checkout", workingController.getCheckoutPage);
+
+router.post("/post-checkout", workingController.postCheckout);
 
 router.get("/annualleave", workingController.getAnnualLeavePage);
 

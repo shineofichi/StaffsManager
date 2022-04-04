@@ -29,9 +29,13 @@ const userSchema = new Schema({
   },
   vaccineInfo: {
     type: Schema.Types.ObjectId,
-    ref: "vaccineCovid",
+    ref: "Vaccine",
   },
   isAdmin: {
+    type: Boolean,
+    required: true,
+  },
+  isWorking: {
     type: Boolean,
     required: true,
   },
