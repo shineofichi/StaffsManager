@@ -2,7 +2,6 @@ const Checkin = require("../models/checkin");
 const Checkout = require("../models/checkout");
 const User = require("../models/user");
 const AnnualLeave = require("../models/anuualLeave");
-const dateFormat = import("dateformat");
 
 exports.getWorkingPage = (req, res, next) => {
   res.render("working/index", {
@@ -51,7 +50,10 @@ exports.getCheckoutPage = (req, res, next) => {
       let timeStart = "Chưa điểm danh";
       let location = "Chưa điểm danh";
       if (checkin[0]) {
-        timeStart = checkin[0].timeStart;
+        timeStart = checkin[0].timeStart
+          .toISOString()
+          .replace(/T/, " ")
+          .replace(/\..+/, "");
         location = checkin[0].location;
       }
       res.render("working/checkout", {
@@ -62,7 +64,7 @@ exports.getCheckoutPage = (req, res, next) => {
           isWorking: req.user.isWorking,
         },
         timeRecord: {
-          timeStart: dateFormat.dateFormat(timeStart),
+          timeStart: timeStart,
           location: location,
         },
       });
