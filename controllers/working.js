@@ -2,6 +2,7 @@ const Checkin = require("../models/checkin");
 const Checkout = require("../models/checkout");
 const User = require("../models/user");
 const AnnualLeave = require("../models/anuualLeave");
+const dateFormat = import("dateformat");
 
 exports.getWorkingPage = (req, res, next) => {
   res.render("working/index", {
@@ -17,9 +18,7 @@ exports.getCheckinPage = (req, res, next) => {
   res.render("working/checkin", {
     pageTitle: "Điểm danh",
     path: "/working",
-    user: {
-      name: req.user.name,
-    },
+    user: req.user,
   });
 };
 
@@ -39,18 +38,22 @@ exports.postCheckin = (req, res, next) => {
     })
     .then(() => {
       console.log("Checked In!");
+      res.redirect("/working/checkout");
     })
     .catch((err) => {
       console.log(err);
     });
-  res.redirect("/working/checkout");
 };
 
 exports.getCheckoutPage = (req, res, next) => {
   Checkin.find({ userId: req.user._id })
     .then((checkin) => {
-      const timeStart = checkin[0].timeStart;
-      const location = checkin[0].location;
+      let timeStart = "Chưa điểm danh";
+      let location = "Chưa điểm danh";
+      if (checkin[0]) {
+        timeStart = checkin[0].timeStart;
+        location = checkin[0].location;
+      }
       res.render("working/checkout", {
         pageTitle: "Kết thúc điểm danh",
         path: "/working",
@@ -59,7 +62,7 @@ exports.getCheckoutPage = (req, res, next) => {
           isWorking: req.user.isWorking,
         },
         timeRecord: {
-          timeStart: timeStart,
+          timeStart: dateFormat.dateFormat(timeStart),
           location: location,
         },
       });
@@ -92,11 +95,11 @@ exports.postCheckout = (req, res, next) => {
     })
     .then(() => {
       console.log("Checkout!");
+      res.redirect("/working/checkin");
     })
     .catch((err) => {
       console.log(err);
     });
-  res.redirect("/working/checkin");
 };
 
 exports.getAnnualLeavePage = (req, res, next) => {

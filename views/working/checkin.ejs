@@ -4,7 +4,13 @@
             <div class="col-12 col-lg-12">
                 <div class="card">
                     <h3 class="card-title">Điểm danh</h3>
-                    <h5>Trạng thái: Offline</h5> 
+                    <h5>            
+                        <%if (user.isWorking) {%>
+                            <span>Đang làm việc </span>
+                        <%}else{%>
+                            <span>Đang Offine </span>
+                        <%}%>
+                    </h5> 
                     <form action="/working/post-checkin" method="POST">
                         <div class="form-group">
                             <label for="name">Tên</label>
