@@ -106,19 +106,17 @@ exports.postCheckout = (req, res, next) => {
 
 exports.getAnnualLeavePage = (req, res, next) => {
   const userId = req.user._id;
+  let canRegistered = false;
   User.find({ _id: userId }).then((user) => {
-    if (user.annualLeave <= 0) {
-      alert("Nhân viên không còn nghỉ phép!");
-      res.redirect("/working");
-    } else {
-      res.render("working/annualleave", {
-        pageTitle: "Kết thúc điểm danh",
-        path: "/working",
-        user: {
-          name: req.user.name,
-        },
-      });
+    if (user[0].annualLeave > 0) {
+      canRegistered = true;
     }
+    res.render("working/annualleave", {
+      pageTitle: "Kết thúc điểm danh",
+      path: "/working",
+      user: user[0],
+      canRegistered: canRegistered,
+    });
   });
 };
 
@@ -127,16 +125,14 @@ exports.postAnnualLeave = (req, res, next) => {
   const date = req.body.date;
   const hours = req.body.hours;
   const reason = req.body.reason;
-  User.find({ _id: userId })
-    .then((user) => {
-      const newAnnualLeaveRegistered = new AnnualLeave({
-        userId: userId,
-        date: date,
-        hours: hours,
-        reason: reason,
-      });
-      return newAnnualLeaveRegistered.save();
-    })
+  const newAnnualLeaveRegistered = new AnnualLeave({
+    userId: userId,
+    date: date,
+    hours: hours,
+    reason: reason,
+  });
+  newAnnualLeaveRegistered
+    .save()
     .then(() => {
       console.log("Annual Leave Was Registered!");
       res.redirect("/working");

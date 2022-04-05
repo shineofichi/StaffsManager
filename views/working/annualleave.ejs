@@ -7,18 +7,26 @@
                     <form action="/working/post-annualleave" method="POST">
                         <div class="form-group">
                             <label for="date">Ngày: </label>
-                            <input type="date" class="form-control" id="date">
+                            <input type="date" class="form-control" id="date" name="date">
+                        </div>
+                        <div class="form-group">
+                            <label for="annual-hours">Số giờ nghỉ còn lại:</label>
+                            <input type="number" class="form-control" id="annual-hours" value="<%= (user.annualLeave*8)%>"  readonly>
                         </div>
                         <div class="form-group">
                             <label for="hours">Số giờ nghỉ: </label>
-                            <input type="number" class="form-control" id="hours" step="0.5" max="8">
+                            <input type="number" class="form-control" id="hours" step="0.5" max="8" min="0" name="hours">
                         </div>
                         <div class="form-group">
                             <label for="reason">Lý do: </label>
-                            <textarea class="form-control" id="reason"></textarea>
+                            <textarea class="form-control" id="reason" name="reason"></textarea>
                         </div>
                         <div class="form-group">
+                        <% if(canRegistered){%>
                             <input type="submit" value="Đăng ký" class="btn btn-success">
+                            <%}else{%>
+                                <p style="color:red">Đã hết ngày phép.</p>
+                            <%}%>
                         </div>
                     </form>
                 </div>
