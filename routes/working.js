@@ -18,7 +18,7 @@ router.post("/post-checkout", workingController.postCheckout);
 
 router.get("/annualleave", workingController.getAnnualLeavePage);
 
-router.post("/post-annualleave", workingController.getAnnualLeavePage);
+router.post("/post-annualleave", workingController.postAnnualLeave);
 
 router.get("/", workingController.getWorkingPage);
 

@@ -15,7 +15,7 @@ const annualLeaveSchema = new Schema({
     type: Number,
     required: true,
   },
-  user: {
+  userId: {
     type: Schema.Types.ObjectId,
     required: true,
   },

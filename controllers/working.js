@@ -2,6 +2,7 @@ const Checkin = require("../models/checkin");
 const Checkout = require("../models/checkout");
 const User = require("../models/user");
 const AnnualLeave = require("../models/anuualLeave");
+const anuualLeave = require("../models/anuualLeave");
 
 exports.getWorkingPage = (req, res, next) => {
   res.render("working/index", {
@@ -133,6 +134,12 @@ exports.postAnnualLeave = (req, res, next) => {
   });
   newAnnualLeaveRegistered
     .save()
+    .then(() => {
+      return User.updateOne(
+        { _id: userId },
+        { annualLeave: req.user.annualLeave - hours / 8 }
+      );
+    })
     .then(() => {
       console.log("Annual Leave Was Registered!");
       res.redirect("/working");
