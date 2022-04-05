@@ -18,6 +18,8 @@ router.post("/post-checkout", workingController.postCheckout);
 
 router.get("/annualleave", workingController.getAnnualLeavePage);
 
+router.post("/offine-registered", workingController.getAnnualLeavePage);
+
 router.get("/", workingController.getWorkingPage);
 
 module.exports = router;

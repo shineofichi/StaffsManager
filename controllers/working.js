@@ -1,6 +1,8 @@
 const Checkin = require("../models/checkin");
 const Checkout = require("../models/checkout");
 const User = require("../models/user");
+const AnnualLeave = require("../models/anuualLeave");
+const user = require("../models/user");
 
 exports.getWorkingPage = (req, res, next) => {
   res.render("working/index", {
@@ -110,4 +112,38 @@ exports.getAnnualLeavePage = (req, res, next) => {
       location: "Công ty",
     },
   });
+};
+
+exports.postAnnualLeave = (req, res, next) => {
+  const userId = req.user._id;
+  const date = req.body.date;
+  const hours = req.body.hours;
+  const reason = req.body.reason;
+  User.find({ _id: userId })
+    .then((user) => {
+      if (user.annualLeave < hours) {
+        return [];
+      } else {
+        return user;
+      }
+    })
+    .then((user) => {
+      if (user) {
+        const newAnnualLeaveRegistered = new AnnualLeave({
+          userId: userId,
+          date: date,
+          hours: hours,
+          reason: reason,
+        });
+        return newAnnualLeaveRegistered.save();
+      } else {
+        throw "Error";
+      }
+    })
+    .then(() => {
+      res.redirect("/working/annualleave");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
