@@ -101,16 +101,20 @@ exports.postCheckout = (req, res, next) => {
 };
 
 exports.getAnnualLeavePage = (req, res, next) => {
-  res.render("working/annualleave", {
-    pageTitle: "Kết thúc điểm danh",
-    path: "/working",
-    user: {
-      name: req.user.name,
-    },
-    timeRecord: {
-      startTime: "9:00",
-      location: "Công ty",
-    },
+  const userId = req.user._id;
+  User.find({ _id: userId }).then((user) => {
+    if (user.annualLeave <= 0) {
+      alert("Nhân viên không còn nghỉ phép!");
+      res.redirect("/working");
+    } else {
+      res.render("working/annualleave", {
+        pageTitle: "Kết thúc điểm danh",
+        path: "/working",
+        user: {
+          name: req.user.name,
+        },
+      });
+    }
   });
 };
 
@@ -121,27 +125,17 @@ exports.postAnnualLeave = (req, res, next) => {
   const reason = req.body.reason;
   User.find({ _id: userId })
     .then((user) => {
-      if (user.annualLeave < hours) {
-        return [];
-      } else {
-        return user;
-      }
-    })
-    .then((user) => {
-      if (user) {
-        const newAnnualLeaveRegistered = new AnnualLeave({
-          userId: userId,
-          date: date,
-          hours: hours,
-          reason: reason,
-        });
-        return newAnnualLeaveRegistered.save();
-      } else {
-        throw "Error";
-      }
+      const newAnnualLeaveRegistered = new AnnualLeave({
+        userId: userId,
+        date: date,
+        hours: hours,
+        reason: reason,
+      });
+      return newAnnualLeaveRegistered.save();
     })
     .then(() => {
-      res.redirect("/working/annualleave");
+      console.log("Annual Leave Was Registered!");
+      res.redirect("/working");
     })
     .catch((err) => {
       console.log(err);
