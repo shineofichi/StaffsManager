@@ -17,10 +17,14 @@ exports.postUserInfomationUpdate = (req, res, next) => {
     annualLeave: req.body.annualLeave,
     imageUrl: req.body.imageUrl,
   };
-  User.updateOne({ _id: req.user._id }, updatedUser).then(() => {
-    console.log("Updated Information!");
-    res.redirect("user/information");
-  });
+  User.updateOne({ _id: req.user._id }, updatedUser)
+    .then(() => {
+      console.log("Updated Information!");
+      res.redirect("user/information");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.getWorkingTimePage = (req, res, next) => {
@@ -62,6 +66,17 @@ exports.getCovidRegisteredPage = (req, res, next) => {
     pageTitle: "Khai báo dương tính Covid",
     user: req.user,
   });
+};
+exports.postCovidRegistered = (req, res, next) => {
+  const userId = req.body.id;
+  User.updateOne({ _id: userId }, { isCovid: true })
+    .then(() => {
+      console.log("Covid Registered!");
+      res.redirect("/covid");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 exports.getVaccinesPage = (req, res, next) => {
   res.render("covid/vaccine.ejs", {

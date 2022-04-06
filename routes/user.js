@@ -10,10 +10,7 @@ const router = express.Router();
 
 router.get("/information", userController.getUserInfomationPage);
 
-router.post(
-  "/post-update-information",
-  userController.postUserInfomationUpdate
-);
+router.post("/update-information", userController.postUserInfomationUpdate);
 
 router.get("/working-time", userController.getWorkingTimePage);
 
@@ -26,6 +23,8 @@ router.get("/covid", userController.getCovidPage);
 router.get("/covid/temp-report", userController.getTempReportPage);
 
 router.get("/covid/covid-registered", userController.getCovidRegisteredPage);
+
+router.post("/covid/post-covid-registered", userController.postCovidRegistered);
 
 router.get("/covid/vaccine", userController.getVaccinesPage);
 

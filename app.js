@@ -55,6 +55,7 @@ mongoose
           vaccineInfo: "6245c1c7c8db36a561adff72",
           isAdmin: true,
           isWorking: false,
+          isCovid: false,
         });
         user.save();
       }

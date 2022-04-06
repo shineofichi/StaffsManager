@@ -2,7 +2,6 @@ const Checkin = require("../models/checkin");
 const Checkout = require("../models/checkout");
 const User = require("../models/user");
 const AnnualLeave = require("../models/anuualLeave");
-const anuualLeave = require("../models/anuualLeave");
 
 exports.getWorkingPage = (req, res, next) => {
   res.render("working/index", {
