@@ -1,7 +1,25 @@
+const User = require("../models/user");
+
 exports.getUserInfomationPage = (req, res, next) => {
   res.render("userInfomation", {
     pageTitle: "Thông tin cá nhân",
     user: req.user,
+  });
+};
+
+exports.postUserInfomationUpdate = (req, res, next) => {
+  const updatedUser = {
+    name: req.body.name,
+    doB: req.body.doB,
+    department: req.body.department,
+    salaryScale: req.body.salaryScale,
+    startDate: req.body.startDate,
+    annualLeave: req.body.annualLeave,
+    imageUrl: req.body.imageUrl,
+  };
+  User.updateOne({ _id: req.user._id }, updatedUser).then(() => {
+    console.log("Updated Information!");
+    res.redirect("user/information");
   });
 };
 

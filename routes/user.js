@@ -10,6 +10,8 @@ const router = express.Router();
 
 router.get("/information", userController.getUserInfomationPage);
 
+router.get("/post-update-information", userController.postUserInfomationUpdate);
+
 router.get("/working-time", userController.getWorkingTimePage);
 
 router.get("/working-time/search", userController.getWorkingTimePage);
