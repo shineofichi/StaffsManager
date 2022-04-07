@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const TempReport = require("../models/tempReport");
 
 exports.getUserInfomationPage = (req, res, next) => {
   res.render("userInfomation", {
@@ -60,6 +61,24 @@ exports.getTempReportPage = (req, res, next) => {
     pageTitle: "Báo cáo thân nhiệt",
     user: req.user,
   });
+};
+exports.postTempReport = (req, res, next) => {
+  const temp = req.body.temp;
+  const date = new Date().getDate();
+  const newTempReport = new TempReport({
+    temp: temp,
+    time: date,
+    userId: req.body.userId,
+  });
+  newTempReport
+    .save()
+    .then(() => {
+      console.log("Reported Temp");
+      res.redirect("/covid");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 exports.getCovidRegisteredPage = (req, res, next) => {
   res.render("covid/isCovid.ejs", {

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const covidSchema = new Schema({
+const tempReportSchema = new Schema({
   temp: {
     required: true,
     type: Number,
@@ -11,14 +11,10 @@ const covidSchema = new Schema({
     type: Date,
     required: true,
   },
-  isCovid: {
-    type: Boolean,
-    required: true,
-  },
-  user: {
+  userId: {
     type: Schema.Types.ObjectId,
     required: true,
   },
 });
 
-module.exports = mongoose.model("Covid", covidSchema);
+module.exports = mongoose.model("TempReport", tempReportSchema);

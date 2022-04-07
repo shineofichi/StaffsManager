@@ -22,6 +22,8 @@ router.get("/covid", userController.getCovidPage);
 
 router.get("/covid/temp-report", userController.getTempReportPage);
 
+router.get("/covid/post-temp", userController.postTempReport);
+
 router.get("/covid/covid-registered", userController.getCovidRegisteredPage);
 
 router.post("/covid/post-covid-registered", userController.postCovidRegistered);
