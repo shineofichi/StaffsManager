@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const TempReport = require("../models/tempReport");
+const Vaccine = require("../models/vaccinesInfomation");
 
 exports.getUserInfomationPage = (req, res, next) => {
   res.render("userInfomation", {
@@ -62,6 +63,7 @@ exports.getTempReportPage = (req, res, next) => {
     user: req.user,
   });
 };
+
 exports.postTempReport = (req, res, next) => {
   const temp = req.body.temp;
   const date = new Date().getDate();
@@ -80,12 +82,14 @@ exports.postTempReport = (req, res, next) => {
       console.log(err);
     });
 };
+
 exports.getCovidRegisteredPage = (req, res, next) => {
   res.render("covid/isCovid.ejs", {
     pageTitle: "Khai báo dương tính Covid",
     user: req.user,
   });
 };
+
 exports.postCovidRegistered = (req, res, next) => {
   const userId = req.body.id;
   User.updateOne({ _id: userId }, { isCovid: true })
@@ -97,9 +101,31 @@ exports.postCovidRegistered = (req, res, next) => {
       console.log(err);
     });
 };
+
 exports.getVaccinesPage = (req, res, next) => {
   res.render("covid/vaccine.ejs", {
     pageTitle: "Thông tin Vaccine đã tiêm",
     user: req.user,
   });
+};
+
+exports.postVaccineInformation = (req, res, next) => {
+  const date = req.body.date;
+  const times = req.body.times;
+  const vaccine = req.body.vaccine;
+  const newVaccineInfo = new Vaccine({
+    date: date,
+    times: times,
+    vaccine: vaccine,
+    userId: req.user._id,
+  });
+  newVaccineInfo
+    .save()
+    .then(() => {
+      console.log("Send Vaccine Info success!");
+      res.redirect("/covid");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };

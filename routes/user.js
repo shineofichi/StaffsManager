@@ -22,12 +22,14 @@ router.get("/covid", userController.getCovidPage);
 
 router.get("/covid/temp-report", userController.getTempReportPage);
 
-router.get("/covid/post-temp", userController.postTempReport);
+router.post("/covid/post-temp", userController.postTempReport);
 
 router.get("/covid/covid-registered", userController.getCovidRegisteredPage);
 
 router.post("/covid/post-covid-registered", userController.postCovidRegistered);
 
 router.get("/covid/vaccine", userController.getVaccinesPage);
+
+router.post("/covid/post-vaccine", userController.postVaccineInformation);
 
 module.exports = router;
