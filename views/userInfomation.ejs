@@ -1,43 +1,66 @@
 <%- include('./includes/head.ejs') %>
    <div class="container">
         <div class="row">
-            <form action="../user/update-information" method="POST">
-                <div class="form-group">
-                    <label for="name">Tên nhân viên</label>
-                    <input type="text" class="form-control" id="name" name="name" value="<%=user.name%>" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="id">Mã nhân viên</label>
-                    <input type="text" class="form-control" id="id" name="id" value="<%=user._id%>" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="doB">Ngày sinh</label>
-                    <input type="text" class="form-control" id="doB" name="doB" value="<%=user.doB%>" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="salaryScale">Hệ số lương</label>
-                    <input type="text" class="form-control" id="salaryScale" name="salaryScale" value="<%=user.salaryScale%>" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="startDate">Ngày nhập công ty</label>
-                    <input type="text" class="form-control" id="startDate" name="startDate" value="<%=user.startDate%>" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="department">Phòng ban</label>
-                    <input type="text" class="form-control" id="department" name="department" value="<%=user.department%>" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="annualLeave">Số ngày phép</label>
-                    <input type="text" class="form-control" id="annualLeave" name="annualLeave" value="<%=user.annualLeave%>" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="imageUrl">Ảnh</label>
-                    <input type="file" class="form-control-file" name="<%=user.imageUrl%>" id="image">
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Cập nhật" class="btn btn-primary">
-                </div>
-            </form>
+            <div class="col-12">
+                <h1 class="centered">Thông tin cá nhân</h1>
+            </div>
+            <div class="col-12 col-md-4">
+                <img src="<%= user.imageUrl%>" alt="Anhtt">
+            </div>
+            <div class="col-12 col-md-8">
+                <form action="../user/update-information" method="POST">
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label">Tên nhân viên</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control " id="name" name="name" value="<%=user.name%>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="id" class="col-sm-3 col-form-label">Mã nhân viên</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="id" name="id" value="<%=user._id%>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="doB" class="col-sm-3 col-form-label">Ngày sinh</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="doB" name="doB" value="<%=user.doB%>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="salaryScale" class="col-sm-3 col-form-label">Hệ số lương</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="salaryScale" name="salaryScale" value="<%=user.salaryScale%>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="startDate" class="col-sm-3 col-form-label">Ngày nhập công ty</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="startDate" name="startDate" value="<%=user.startDate%>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="department" class="col-sm-3 col-form-label">Phòng ban</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="department" name="department" value="<%=user.department%>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="annualLeave" class="col-sm-3 col-form-label">Số ngày phép</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="annualLeave" name="annualLeave" value="<%=user.annualLeave%>" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="imageUrl" class="col-sm-3 col-form-label">Ảnh</label>
+                        <div class="col-sm-9">
+                        <input type="file" class="form-control-file" name="<%=user.imageUrl%>" id="image">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Cập nhật" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 <%- include('./includes/footer.ejs') %>

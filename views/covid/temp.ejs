@@ -1,10 +1,10 @@
 <%- include('../includes/head.ejs') %>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-lg-12">
                 <div class="card">
                     <h3 class="card-title">Đăng ký thân nhiệt hàng ngày</h3>
-                    <form action="/covid/post-temp" method="POST">
+                    <form action="../user/covid/post-temp" method="POST">
                         <div class="form-group">
                             <label for="temp">Nhiệt độ: </label>
                             <input type="number" class="form-control" id="temp" name="temp">

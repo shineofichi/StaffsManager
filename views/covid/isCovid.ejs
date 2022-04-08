@@ -1,7 +1,9 @@
 <%- include('../includes/head.ejs') %>
-   <div class="container">
+   <div class="container-fluid">
         <div class="row">
-            <h1>Đăng ký đã nhiễm Covid</h1>
+            <div class="col-12">
+                <h1 class="centered">Đăng ký đã nhiễm Covid</h1>
+            </div>
             <form action="../user/covid/post-covid-registered" method="POST">
                 <div class="form-group">
                     <label for="name">Tên nhân viên</label>

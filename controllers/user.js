@@ -66,17 +66,18 @@ exports.getTempReportPage = (req, res, next) => {
 
 exports.postTempReport = (req, res, next) => {
   const temp = req.body.temp;
-  const date = new Date().getDate();
+  const date = new Date().getTime();
+  console.log(date);
   const newTempReport = new TempReport({
     temp: temp,
     time: date,
-    userId: req.body.userId,
+    userId: req.user._id,
   });
   newTempReport
     .save()
     .then(() => {
       console.log("Reported Temp");
-      res.redirect("/covid");
+      res.redirect("/user/covid");
     })
     .catch((err) => {
       console.log(err);
