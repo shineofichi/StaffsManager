@@ -4,21 +4,40 @@ const User = require("../models/user");
 const AnnualLeave = require("../models/anuualLeave");
 
 exports.getWorkingPage = (req, res, next) => {
-  res.render("working/index", {
-    pageTitle: "Điểm danh/Kết thúc giờ làm",
-    path: "/working",
-    user: {
-      name: req.user.name,
-    },
-  });
-};
-
-exports.getCheckinPage = (req, res, next) => {
-  res.render("working/checkin", {
-    pageTitle: "Điểm danh",
-    path: "/working",
-    user: req.user,
-  });
+  const userId = req.user._id;
+  let canRegistered = false;
+  User.find({ _id: userId })
+    .then((user) => {
+      if (user[0].annualLeave > 0) {
+        canRegistered = true;
+      }
+      user[0].canRegistered = canRegistered;
+      return user;
+    })
+    .then((user) => {
+      Checkin.find({ userId: req.user._id }).then((checkin) => {
+        let timeStart = "Chưa điểm danh";
+        let location = "Chưa điểm danh";
+        if (checkin[0]) {
+          timeStart = checkin[0].timeStart
+            .toISOString()
+            .replace(/T/, " ")
+            .replace(/\..+/, "");
+          location = checkin[0].location;
+          user[0].location = location;
+          user[0].timeStart = timeStart;
+        }
+        console.log(user);
+        res.render("working/index", {
+          pageTitle: "Màn hình làm việc",
+          path: "/working",
+          user: user[0],
+        });
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.postCheckin = (req, res, next) => {
@@ -37,37 +56,7 @@ exports.postCheckin = (req, res, next) => {
     })
     .then(() => {
       console.log("Checked In!");
-      res.redirect("/working/checkout");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-exports.getCheckoutPage = (req, res, next) => {
-  Checkin.find({ userId: req.user._id })
-    .then((checkin) => {
-      let timeStart = "Chưa điểm danh";
-      let location = "Chưa điểm danh";
-      if (checkin[0]) {
-        timeStart = checkin[0].timeStart
-          .toISOString()
-          .replace(/T/, " ")
-          .replace(/\..+/, "");
-        location = checkin[0].location;
-      }
-      res.render("working/checkout", {
-        pageTitle: "Kết thúc điểm danh",
-        path: "/working",
-        user: {
-          name: req.user.name,
-          isWorking: req.user.isWorking,
-        },
-        timeRecord: {
-          timeStart: timeStart,
-          location: location,
-        },
-      });
+      res.redirect("/working");
     })
     .catch((err) => {
       console.log(err);
@@ -97,27 +86,11 @@ exports.postCheckout = (req, res, next) => {
     })
     .then(() => {
       console.log("Checkout!");
-      res.redirect("/working/checkin");
+      res.redirect("/working");
     })
     .catch((err) => {
       console.log(err);
     });
-};
-
-exports.getAnnualLeavePage = (req, res, next) => {
-  const userId = req.user._id;
-  let canRegistered = false;
-  User.find({ _id: userId }).then((user) => {
-    if (user[0].annualLeave > 0) {
-      canRegistered = true;
-    }
-    res.render("working/annualleave", {
-      pageTitle: "Kết thúc điểm danh",
-      path: "/working",
-      user: user[0],
-      canRegistered: canRegistered,
-    });
-  });
 };
 
 exports.postAnnualLeave = (req, res, next) => {
