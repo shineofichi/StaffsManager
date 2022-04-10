@@ -27,7 +27,6 @@ exports.getWorkingPage = (req, res, next) => {
           user[0].location = location;
           user[0].timeStart = timeStart;
         }
-        console.log(user);
         res.render("working/index", {
           pageTitle: "Màn hình làm việc",
           path: "/working",
@@ -95,7 +94,10 @@ exports.postCheckout = (req, res, next) => {
 
 exports.postAnnualLeave = (req, res, next) => {
   const userId = req.user._id;
-  const date = req.body.date;
+  let date = new Date();
+  if (req.body.date) {
+    date = req.body.date;
+  }
   const hours = req.body.hours;
   const reason = req.body.reason;
   const newAnnualLeaveRegistered = new AnnualLeave({
