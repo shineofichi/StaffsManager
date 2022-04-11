@@ -26,6 +26,19 @@
                                 <input type="submit" value="Xác nhận" class="btn btn-primary">
                             </div>
                         </form>
+                        <div>
+                            <h3 class="text-center">Lịch sử nhiệt độ</h3>
+                            <% if (tempReport.length>0) {%>
+                                <ul>
+                                    <% tempReport.forEach(temp=>{%>
+                                        <li>
+                                            <p><%=temp.time%>: <%=temp.temp%></p>
+                                        </li>
+                                    <%})%>
+                            <%}else{%>
+
+                            <%}%>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,6 +63,7 @@
                                 <input type="submit" value="Xác nhận" class="btn btn-primary">
                             </div>
                         </form>
+                        <hr>
                     </div>
                 </div>
             </div>

@@ -22,7 +22,7 @@ exports.postUserInfomationUpdate = (req, res, next) => {
   User.updateOne({ _id: req.user._id }, updatedUser)
     .then(() => {
       console.log("Updated Information!");
-      res.redirect("user/information");
+      res.redirect("/user/information");
     })
     .catch((err) => {
       console.log(err);
@@ -51,18 +51,31 @@ exports.getSalarySearchPage = (req, res, next) => {
 };
 
 exports.getCovidPage = (req, res, next) => {
-  res.render("covid/index.ejs", {
-    pageTitle: "Thông tin Covid",
-    user: req.user,
+  const userId = req.user._id;
+  TempReport.find({ userId: userId }).then((tempReport) => {
+    const data = tempReport.map((temp) => {
+      const formatedDate = temp.time
+        .toISOString()
+        .replace(/T/, " ")
+        .replace(/\..+/, "");
+      const formatedTemp = { ...temp._doc, time: formatedDate };
+      return formatedTemp;
+    });
+    console.log(data);
+    res.render("covid/index.ejs", {
+      pageTitle: "Thông tin Covid",
+      user: req.user,
+      tempReport: data,
+    });
   });
 };
 
 exports.postTempReport = (req, res, next) => {
   const temp = req.body.temp;
-  const date = new Date().getTime();
+  const time = new Date().getTime();
   const newTempReport = new TempReport({
     temp: temp,
-    time: date,
+    time: time,
     userId: req.user._id,
   });
   newTempReport
