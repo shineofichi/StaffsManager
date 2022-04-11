@@ -26,13 +26,14 @@
                                 <input type="submit" value="Xác nhận" class="btn btn-primary">
                             </div>
                         </form>
+                        <hr>
                         <div>
                             <h3 class="text-center">Lịch sử nhiệt độ</h3>
                             <% if (tempReport.length>0) {%>
                                 <ul>
                                     <% tempReport.forEach(temp=>{%>
                                         <li>
-                                            <p><%=temp.time%>: <%=temp.temp%></p>
+                                            <p><b><%=temp.time%></b>: <%=temp.temp%></p>
                                         </li>
                                     <%})%>
                             <%}else{%>
@@ -64,6 +65,19 @@
                             </div>
                         </form>
                         <hr>
+                        <div>
+                            <h3 class="text-center">Lịch sử vaccine</h3>
+                            <% if (vaccine.length>0) {%>
+                                <ul>
+                                    <% vaccine.forEach(vaccine=>{%>
+                                        <li>
+                                            <p><b>Lần <%=vaccine.times%>(<%= vaccine.name%>)</b>: <%=vaccine.date%></p>
+                                        </li>
+                                    <%})%>
+                            <%}else{%>
+
+                            <%}%>
+                        </div>
                     </div>
                 </div>
             </div>

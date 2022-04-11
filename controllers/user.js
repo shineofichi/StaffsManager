@@ -52,22 +52,42 @@ exports.getSalarySearchPage = (req, res, next) => {
 
 exports.getCovidPage = (req, res, next) => {
   const userId = req.user._id;
-  TempReport.find({ userId: userId }).then((tempReport) => {
-    const data = tempReport.map((temp) => {
-      const formatedDate = temp.time
-        .toISOString()
-        .replace(/T/, " ")
-        .replace(/\..+/, "");
-      const formatedTemp = { ...temp._doc, time: formatedDate };
-      return formatedTemp;
+  TempReport.find({ userId: userId })
+    .then((tempReport) => {
+      const data = tempReport.map((temp) => {
+        const formatedDate = temp.time
+          .toISOString()
+          .replace(/T/, " ")
+          .replace(/\..+/, "");
+        const formatedTemp = {
+          ...temp._doc,
+          time: formatedDate,
+        };
+        return formatedTemp;
+      });
+      return data;
+    })
+    .then((tempReport) => {
+      Vaccine.find({ userId: userId }).then((vaccine) => {
+        const data = vaccine.map((vaccine) => {
+          const formatedDate = vaccine.date
+            .toISOString()
+            .replace(/T/, " ")
+            .replace(/\..+/, "");
+          const formatedData = {
+            ...vaccine._doc,
+            date: formatedDate.substring(0, 10),
+          };
+          return formatedData;
+        });
+        res.render("covid/index.ejs", {
+          pageTitle: "Thông tin Covid",
+          user: req.user,
+          tempReport: tempReport,
+          vaccine: data,
+        });
+      });
     });
-    console.log(data);
-    res.render("covid/index.ejs", {
-      pageTitle: "Thông tin Covid",
-      user: req.user,
-      tempReport: data,
-    });
-  });
 };
 
 exports.postTempReport = (req, res, next) => {
