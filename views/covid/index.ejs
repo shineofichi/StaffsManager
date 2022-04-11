@@ -1,26 +1,57 @@
 <%- include('../includes/head.ejs') %>
    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-lg-4">
-                <a href= "../user/covid/covid-registered">
-                    <div class="card">
-                        <h3 class="card-title">Đăng ký dương tính</h3>
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <h3 class="card-title">Đăng ký dương tính</h3>
+                    <div class="card-body">
+                        <form action="../user/covid/post-covid-registered" method="POST">
+                            <div class="form-group text-center">
+                                <input type="submit" value="Xác nhận" class="btn btn-primary">
+                            </div>
+                        </form>
                     </div>
-                </a>   
+                </div>
             </div>
-            <div class="col-12 col-lg-4">
-                <a href= "../user/covid/temp-report">
-                    <div class="card">
-                        <h3 class="card-title">Đăng ký thân nhiệt hàng ngày</h3>
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <h3 class="card-title">Đăng ký thân nhiệt hàng ngày</h3>
+                    <div clas="card-body">
+                        <form action="../user/covid/post-temp" method="POST">
+                            <div class="form-group">
+                                <label for="temp">Nhiệt độ: </label>
+                                <input type="number" class="form-control" id="temp" name="temp">
+                            </div>
+                            <div class="form-group text-center">
+                                <input type="submit" value="Xác nhận" class="btn btn-primary">
+                            </div>
+                        </form>
                     </div>
-                </a>   
+                </div>
             </div>
-            <div class="col-12 col-lg-4">
-                <a href= "../user/covid/vaccine">
-                    <div class="card">
-                        <h3 class="card-title">Đăng ký thông tin vaccine</h3>
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <h3 class="card-title">Đăng ký thông tin vaccine</h3>
+                    <div clas="card-body">
+                        <form action="../user/covid/post-vaccine" method="POST">
+                            <div class="form-group">
+                                <label for="times">Mũi thứ</label>
+                                <input type="text" class="form-control" id="times" name="times">
+                            </div>
+                            <div class="form-group">
+                                <label for="vaccine">Loại vaccine</label>
+                                <input type="text" class="form-control" id="vaccine" name="vaccine">
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Ngày tiêm</label>
+                                <input type="date" class="form-control" id="date" name="date">
+                            </div>
+                            <div class="form-group text-center">
+                                <input type="submit" value="Xác nhận" class="btn btn-primary">
+                            </div>
+                        </form>
                     </div>
-                </a>   
+                </div>
             </div>
         </div>
     </div>
