@@ -44,16 +44,19 @@ exports.getWorkingTimeSearchPage = (req, res, next) => {
     .then((checkout) => {
       const workingData = checkout.map((data) => {
         const addSumaryTime = {
-          ...data,
-          sumaryTime: (data.timeEnd - data.timeStart) / 360000,
+          ...data._doc,
+          sumaryTime: (data.timeEnd - data.timeStart) / 3600000,
+          timeStart: dateFormat(data.timeStart),
+          timeEnd: dateFormat(data.timeEnd),
         };
         return addSumaryTime;
       });
+
       console.log(workingData);
       res.render("workingTimeSearch/workingTime.ejs", {
         pageTitle: "Tra cứu thông tin giờ làm",
         user: req.user,
-        checkoutData: workingData,
+        workingData: workingData,
       });
     })
     .catch((err) => {

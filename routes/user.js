@@ -14,7 +14,7 @@ router.post("/update-information", userController.postUserInfomationUpdate);
 
 router.get("/working-time", userController.getWorkingTimePage);
 
-router.get("/working-time/search", userController.getWorkingTimePage);
+router.get("/working-time/search", userController.getWorkingTimeSearchPage);
 
 router.get("/working-time/salary", userController.getSalarySearchPage);
 

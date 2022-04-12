@@ -1,3 +1,45 @@
 <%- include('../includes/head.ejs') %>
-   
+    <div class="container-fluid">
+        <div class="col-12">
+            <h3 class="text-center">Danh sách các lượt điểm danh</h3>
+        </div>
+        <div class="col-12">
+            <div class="container">
+        <div class="row">
+            <% if(workingData.length>0){%>
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Ngày</th>
+                                <th scope="col">Start</th>
+                                <th scope="col">End</th>
+                                <th scope="col">Địa điểm</th>
+                                <th scope="col">Số giờ làm thêm</th>
+                                <th scope="col">Nghỉ phép</th>
+                                <th scope="col">Tổng giờ làm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <%workingData.forEach(data=>{%>
+                            <tr>
+                                <th scope="row" rowspan="1"><%=data.timeStart[0]%></th>
+                                <td><%=data.timeStart[1]%></td>
+                                <td><%=data.timeEnd[1]%></td>
+                                <td><%=data.location%></td>
+                                <td><%=data.overTime%></td>
+                                <td><%=data.annual%></td>
+                                <td><%=data.sumaryTime%></td>
+                            </tr>
+                        <%})%>
+                        </tbody>
+                    </table>
+                        
+            <%}else{%>
+                <h5>Chưa có dữ liệu lượt điểm danh.</h5>
+            <%}%>
+            
+        </div>
+    </div>
+        </div>
+    </div>
 <%- include('../includes/footer.ejs') %>
