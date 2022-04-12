@@ -2,6 +2,7 @@ const User = require("../models/user");
 const TempReport = require("../models/tempReport");
 const Vaccine = require("../models/vaccinesInfomation");
 const Checkout = require("../models/checkout");
+const dateFormat = require("../utils/dateFormat");
 
 exports.getUserInfomationPage = (req, res, next) => {
   res.render("userInfomation", {
@@ -64,10 +65,10 @@ exports.getCovidPage = (req, res, next) => {
   TempReport.find({ userId: userId })
     .then((tempReport) => {
       const data = tempReport.map((temp) => {
-        const formatedDate = temp.time
-          .toISOString()
-          .replace(/T/, " ")
-          .replace(/\..+/, "");
+        const formatedDate = dateFormat(temp.time)[0];
+        // .toISOString()
+        // .replace(/T/, " ")
+        // .replace(/\..+/, "");
         const formatedTemp = {
           ...temp._doc,
           time: formatedDate,
@@ -79,13 +80,10 @@ exports.getCovidPage = (req, res, next) => {
     .then((tempReport) => {
       Vaccine.find({ userId: userId }).then((vaccine) => {
         const data = vaccine.map((vaccine) => {
-          const formatedDate = vaccine.date
-            .toISOString()
-            .replace(/T/, " ")
-            .replace(/\..+/, "");
+          const formatedDate = dateFormat(vaccine.date)[0];
           const formatedData = {
             ...vaccine._doc,
-            date: formatedDate.substring(0, 10),
+            date: formatedDate,
           };
           return formatedData;
         });
