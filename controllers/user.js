@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const TempReport = require("../models/tempReport");
 const Vaccine = require("../models/vaccinesInfomation");
+const Checkout = require("../models/checkout");
 
 exports.getUserInfomationPage = (req, res, next) => {
   res.render("userInfomation", {
@@ -37,10 +38,18 @@ exports.getWorkingTimePage = (req, res, next) => {
 };
 
 exports.getWorkingTimeSearchPage = (req, res, next) => {
-  res.render("workingTimeSearch/workingTime.ejs", {
-    pageTitle: "Tra cứu thông tin giờ làm",
-    user: req.user,
-  });
+  const userId = req.user._id;
+  Checkout.find({ userId: userId })
+    .then((checkout) => {
+      res.render("workingTimeSearch/workingTime.ejs", {
+        pageTitle: "Tra cứu thông tin giờ làm",
+        user: req.user,
+        checkoutData: checkout,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.getSalarySearchPage = (req, res, next) => {
