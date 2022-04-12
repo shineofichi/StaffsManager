@@ -42,10 +42,18 @@ exports.getWorkingTimeSearchPage = (req, res, next) => {
   const userId = req.user._id;
   Checkout.find({ userId: userId })
     .then((checkout) => {
+      const workingData = checkout.map((data) => {
+        const addSumaryTime = {
+          ...data,
+          sumaryTime: (data.timeEnd - data.timeStart) / 360000,
+        };
+        return addSumaryTime;
+      });
+      console.log(workingData);
       res.render("workingTimeSearch/workingTime.ejs", {
         pageTitle: "Tra cứu thông tin giờ làm",
         user: req.user,
-        checkoutData: checkout,
+        checkoutData: workingData,
       });
     })
     .catch((err) => {

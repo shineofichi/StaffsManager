@@ -20,5 +20,9 @@ const checkoutSchema = new Schema({
     required: true,
   },
 });
-
+checkoutSchema.methods.getSumaryTime = function () {
+  const workingTime = this.timeEnd - this.timeStart;
+  const workingHour = workingTime / 360000;
+  return workingHour;
+};
 module.exports = mongoose.model("Checkout", checkoutSchema);
