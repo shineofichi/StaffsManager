@@ -54,3 +54,8 @@ img {
 .sub-title {
   text-align: center;
 }
+.table .thead-dark th {
+  color: #fff;
+  background-color: #006778;
+  border-color: #454d55;
+}

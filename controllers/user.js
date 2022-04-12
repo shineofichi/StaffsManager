@@ -2,7 +2,8 @@ const User = require("../models/user");
 const TempReport = require("../models/tempReport");
 const Vaccine = require("../models/vaccinesInfomation");
 const Checkout = require("../models/checkout");
-const dateFormat = require("../utils/dateFormat");
+const dateFormat = require("../utils/dateFormat").dateFormat;
+const getDiffDate = require("../utils/dateFormat").getDiffDate;
 
 exports.getUserInfomationPage = (req, res, next) => {
   res.render("userInfomation", {
@@ -45,7 +46,7 @@ exports.getWorkingTimeSearchPage = (req, res, next) => {
       const workingData = checkout.map((data) => {
         const addSumaryTime = {
           ...data._doc,
-          sumaryTime: (data.timeEnd - data.timeStart) / 3600000,
+          sumaryTime: getDiffDate(data.timeEnd, data.timeStart),
           timeStart: dateFormat(data.timeStart),
           timeEnd: dateFormat(data.timeEnd),
         };
