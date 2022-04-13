@@ -50,6 +50,13 @@ exports.getWorkingTimeSearchPage = (req, res, next) => {
           timeStart: dateFormat(data.timeStart),
           timeEnd: dateFormat(data.timeEnd),
         };
+        const workingTimeArray = [];
+        for (let index = 0; index < addSumaryTime.length; index++) {
+          const checkin = addSumaryTime[index];
+          const date = checkin.timeStart[0];
+          workingTimeArray.push({ date: date, working: checkin });
+        }
+        console.log(workingTimeArray);
         return addSumaryTime;
       });
 
@@ -77,10 +84,7 @@ exports.getCovidPage = (req, res, next) => {
   TempReport.find({ userId: userId })
     .then((tempReport) => {
       const data = tempReport.map((temp) => {
-        const formatedDate = dateFormat(temp.time)[0];
-        // .toISOString()
-        // .replace(/T/, " ")
-        // .replace(/\..+/, "");
+        const formatedDate = dateFormat(temp.time);
         const formatedTemp = {
           ...temp._doc,
           time: formatedDate,
