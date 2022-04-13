@@ -50,16 +50,15 @@ exports.getWorkingTimeSearchPage = (req, res, next) => {
           timeStart: dateFormat(data.timeStart),
           timeEnd: dateFormat(data.timeEnd),
         };
-        const workingTimeArray = [];
-        for (let index = 0; index < addSumaryTime.length; index++) {
-          const checkin = addSumaryTime[index];
-          const date = checkin.timeStart[0];
-          workingTimeArray.push({ date: date, working: checkin });
-        }
-        console.log(workingTimeArray);
         return addSumaryTime;
       });
-
+      const workingTimeArray = [];
+      for (let index = 0; index < addSumaryTime.length; index++) {
+        const checkin = addSumaryTime[index];
+        const date = checkin.timeStart[0];
+        workingTimeArray.push({ date: date, working: checkin });
+      }
+      console.log(workingTimeArray);
       console.log(workingData);
       res.render("workingTimeSearch/workingTime.ejs", {
         pageTitle: "Tra cứu thông tin giờ làm",
