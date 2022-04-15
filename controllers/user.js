@@ -53,17 +53,23 @@ exports.getWorkingTimeSearchPage = (req, res, next) => {
         return addSumaryTime;
       });
       const workingTimeArray = [];
-      for (let index = 0; index < addSumaryTime.length; index++) {
-        const checkin = addSumaryTime[index];
+      for (let index = 0; index < workingData.length; index++) {
+        const checkin = workingData[index];
         const date = checkin.timeStart[0];
         workingTimeArray.push({ date: date, working: checkin });
       }
-      console.log(workingTimeArray);
-      console.log(workingData);
+
+      const days = workingTimeArray.reduce((hash, obj) => {
+        if (obj["date"] === undefined) return hash;
+        return Object.assign(hash, {
+          [obj["date"]]: (hash[obj["date"]] || []).concat(obj["working"]),
+        });
+      }, []);
+      console.log(days);
       res.render("workingTimeSearch/workingTime.ejs", {
         pageTitle: "Tra cứu thông tin giờ làm",
         user: req.user,
-        workingData: workingData,
+        workingData: days,
       });
     })
     .catch((err) => {
