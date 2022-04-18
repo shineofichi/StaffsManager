@@ -6,10 +6,28 @@ const dateFormat = require("../utils/dateFormat").dateFormat;
 const getDiffDate = require("../utils/dateFormat").getDiffDate;
 
 exports.getUserInfomationPage = (req, res, next) => {
-  res.render("userInfomation", {
-    pageTitle: "Thông tin cá nhân",
-    user: req.user,
-  });
+  const userId = req.user._id;
+  User.find({ _id: userId })
+    .then((user) => {
+      const doBFormat = dateFormat(user[0].doB)[0];
+      const startDateFormat = dateFormat(user[0].startDate)[0];
+      const formatData = {
+        ...user[0]._doc,
+        doB: doBFormat,
+        startDate: startDateFormat,
+      };
+      console.log(formatData);
+      return formatData;
+    })
+    .then((user) => {
+      res.render("userInfomation", {
+        pageTitle: "Thông tin cá nhân",
+        user: user,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.postUserInfomationUpdate = (req, res, next) => {
