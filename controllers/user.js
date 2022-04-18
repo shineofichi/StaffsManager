@@ -58,14 +58,12 @@ exports.getWorkingTimeSearchPage = (req, res, next) => {
         const date = checkin.timeStart[0];
         workingTimeArray.push({ date: date, working: checkin });
       }
-
       const days = workingTimeArray.reduce((hash, obj) => {
         if (obj["date"] === undefined) return hash;
         return Object.assign(hash, {
           [obj["date"]]: (hash[obj["date"]] || []).concat(obj["working"]),
         });
       }, []);
-      console.log(days);
       res.render("workingTimeSearch/workingTime.ejs", {
         pageTitle: "Tra cứu thông tin giờ làm",
         user: req.user,
