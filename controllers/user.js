@@ -16,7 +16,6 @@ exports.getUserInfomationPage = (req, res, next) => {
         doB: doBFormat,
         startDate: startDateFormat,
       };
-      console.log(formatData);
       return formatData;
     })
     .then((user) => {
