@@ -15,14 +15,17 @@ const checkoutSchema = new Schema({
     type: String,
     required: true,
   },
+  overTime: {
+    type: Number,
+  },
   userId: {
     type: Schema.Types.ObjectId,
     required: true,
   },
 });
-checkoutSchema.methods.getSumaryTime = function () {
-  const workingTime = this.timeEnd - this.timeStart;
-  const workingHour = workingTime / 360000;
-  return workingHour;
+checkoutSchema.methods.saveToOT = function () {
+  return this.model("Checkout")
+    .find({ timeStart: userId })
+    .then((checkout) => {});
 };
 module.exports = mongoose.model("Checkout", checkoutSchema);

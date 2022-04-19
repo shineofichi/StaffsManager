@@ -42,7 +42,7 @@ exports.getWorkingPage = (req, res, next) => {
 exports.postCheckin = (req, res, next) => {
   const location = req.body.location;
   const userId = req.user._id;
-  const timeStart = new Date().getTime();
+  const timeStart = new Date();
   const checkinRecord = new Checkin({
     location: location,
     timeStart: timeStart,
@@ -68,7 +68,7 @@ exports.postCheckout = (req, res, next) => {
       const location = checkin[0].location;
       const userId = checkin[0].userId;
       const timeStart = checkin[0].timeStart;
-      const timeEnd = new Date().getTime();
+      const timeEnd = new Date();
       const checkoutRecord = new Checkout({
         userId: userId,
         location: location,

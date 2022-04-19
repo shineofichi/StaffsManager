@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
-  User.findById("62498e316776e2659d6a2549")
+  User.findById("625e094a03d167468ffb1c3b")
     .then((user) => {
       req.user = user;
       next();
@@ -45,14 +45,14 @@ mongoose
       if (!user) {
         const user = new User({
           name: "AnhTT",
-          doB: new Date().getDate(),
+          doB: new Date(),
           department: "IT",
           salaryScale: 1.0,
           startDate: new Date(),
           annualLeave: 0,
           imageUrl:
             "https://recenthighlights.com/wp-content/uploads/2022/03/Luffy-Gear-5.jpg",
-          vaccineInfo: "6245c1c7c8db36a561adff72",
+          vaccineInfo: "a",
           isAdmin: true,
           isWorking: false,
           isCovid: false,

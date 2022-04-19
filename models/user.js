@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const dateFormat = require("../utils/dateFormat").dateFormat;
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -9,6 +9,7 @@ const userSchema = new Schema({
   },
   doB: {
     type: Date,
+    transform: (y) => dateFormat(y)[0],
     required: true,
   },
   department: {
@@ -20,16 +21,13 @@ const userSchema = new Schema({
   },
   startDate: {
     type: Date,
+    transform: (y) => dateFormat(y)[0],
   },
   annualLeave: {
     type: Number,
   },
   imageUrl: {
     type: String,
-  },
-  vaccineInfo: {
-    type: Schema.Types.ObjectId,
-    ref: "Vaccine",
   },
   isAdmin: {
     type: Boolean,
