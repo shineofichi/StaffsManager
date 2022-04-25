@@ -40,7 +40,8 @@ checkoutSchema.methods.saveToOT = function () {
       let sumTimeInMiliSecond = 0;
       for (let index = 0; index < checkout.length; index++) {
         const element = checkout[index];
-        sumTimeInMiliSecond = element.timeEnd - element.timeStart;
+        sumTimeInMiliSecond =
+          sumTimeInMiliSecond + (element.timeEnd - element.timeStart);
       }
       const sumTime = sumTimeInMiliSecond / 3600000;
       const workTime = (this.timeEnd - this.timeStart) / 3600000;
