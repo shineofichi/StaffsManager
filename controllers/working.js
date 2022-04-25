@@ -75,7 +75,7 @@ exports.postCheckout = (req, res, next) => {
         timeStart: timeStart,
         timeEnd: timeEnd,
       });
-      return checkoutRecord.save();
+      return checkoutRecord.saveToOT();
     })
     .then(() => {
       return Checkin.deleteMany({ userId: req.user._id });

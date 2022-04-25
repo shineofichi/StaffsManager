@@ -1,4 +1,5 @@
 const path = require("path");
+const config = require("./utils/config");
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -37,9 +38,7 @@ app.use(homeRoutes);
 app.use(errorController.get404);
 
 mongoose
-  .connect(
-    "mongodb+srv://anhtt:agzwSoCXtFOQfLui@cluster0.0fvan.mongodb.net/staff-manager?retryWrites=true&w=majority"
-  )
+  .connect(config.MONGODB_URI)
   .then(() => {
     User.findOne().then((user) => {
       if (!user) {
