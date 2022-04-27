@@ -58,4 +58,16 @@ checkoutSchema.methods.saveToOT = function () {
       return this.save();
     });
 };
+checkoutSchema.methods.salaryCaculate = function (userId, month, year) {
+  const start = new Date(year, month, 1);
+  const end = new Date(year, month, 31);
+  this.model("Checkout")
+    .find({
+      userId: userId,
+      timeStart: { $gte: start, $lte: end },
+    })
+    .then((checkouts) => {
+      const data = checkouts.map((checkout) => {});
+    });
+};
 module.exports = mongoose.model("Checkout", checkoutSchema);

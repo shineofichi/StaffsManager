@@ -2,6 +2,7 @@ const User = require("../models/user");
 const TempReport = require("../models/tempReport");
 const Vaccine = require("../models/vaccinesInfomation");
 const Checkout = require("../models/checkout");
+const config = require("../utils/config");
 const dateFormat = require("../utils/dateFormat").dateFormat;
 const getDiffDate = require("../utils/dateFormat").getDiffDate;
 
@@ -96,6 +97,21 @@ exports.getSalarySearchPage = (req, res, next) => {
   res.render("workingTimeSearch/salary.ejs", {
     pageTitle: "Tra cứu thông tin giờ làm",
     user: req.user,
+  });
+};
+
+exports.postSalarySearchPage = (req, res, next) => {
+  const userId = req.user._id;
+  const month = req.body.month;
+  const year = req.body.year;
+
+  res.render("workingTimeSearch/salary.ejs", {
+    pageTitle: "Tra cứu thông tin giờ làm",
+    user: req.user,
+    baseSalary: config.BASE_SALARY,
+    overTimeSalary: config.OVER_TIME_SALARY_IN_A_HOUR,
+    month: month,
+    year: year,
   });
 };
 

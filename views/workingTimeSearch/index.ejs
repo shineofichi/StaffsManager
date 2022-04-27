@@ -1,20 +1,33 @@
 <%- include('../includes/head.ejs') %>
-   <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <a href="../../user/working-time/search">
-                    <div class="card">
-                        <h3 class="card-title">Danh sách giờ làm</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6">
-                <a href="../../user/working-time/salary">
-                    <div class="card">
-                        <h3 class="card-title">Lương tháng</h3>
-                    </div>
-                </a>
-            </div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <a href="../../user/working-time/search">
+        <div class="card">
+          <h3 class="card-title">Danh sách giờ làm</h3>
         </div>
+      </a>
     </div>
+    <div class="col-12 col-md-6">
+      <div class="card">
+        <div class="card-title">
+          <h3 class="card-title">Tìm bảng lương</h3>
+        </div>
+        <div class="card-body">
+          <form class="form-inline" action="../../user/working-time/post-salary" method="POST">
+            <div class="form-group mb-2">
+              <label for="month">Tháng</label>
+              <input type="text" class="form-control" id="month" name="month" size="3">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="year">Năm</label>
+              <input type="text" class="form-control" id="year" name="year" size="5">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Tìm</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%- include('../includes/footer.ejs') %>

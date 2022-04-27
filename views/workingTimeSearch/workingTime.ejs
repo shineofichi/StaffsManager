@@ -1,61 +1,61 @@
 <%- include('../includes/head.ejs') %>
-    <div class="container-fluid">
-        <div class="col-12">
-            <h3 class="text-center">Danh sách các lượt điểm danh</h3>
-        </div>
-        <div class="col-12">
-            <div class="container">
-        <div class="row">
-                        <%for (const data in workingData) {%>
-                            <%const sum = [];%>
-                        <table class="table table-bordered">
-                                <thead class="thead-dark thead-personal">
-                                    <tr>
-                                        <th scope="col">Ngày</th>
-                                        <th scope="col">Start</th>
-                                        <th scope="col">End</th>
-                                        <th scope="col">Địa điểm</th>
-                                        <th scope="col">Số giờ làm thêm</th>
-                                        <th scope="col">Nghỉ phép</th>
-                                        <th scope="col">Tổng giờ làm</th>
-                                    </tr>
-                                </thead>
-                             <tbody>
-                            <%workingData[data].forEach(date =>{ %>
-                                <%sum.push(date.sumaryTime);%>
-                                <%const timeWorking = date.timeEnd[1]-date.timeStart[1]; console.log(date)%>
-                                <tr>
-                                    <th scope="row"><%=date.timeStart[0]%></th>
-                                    <td><%=date.timeStart[1]%></td>
-                                    <td><%=date.timeEnd[1]%></td>
-                                    <td><%=date.location%></td>
-                                    <td><%=date.overTime%></td>
-                                    <td><%=date.annual%></td>
-                                    <td><%=date.sumaryTime%></td>
-                                </tr>
-                       <%})%>
-                       <%const sumary = sum.reduce((pre,cur)=>{
-                           const preSplit=pre.split(":")
-                           const curSplit=cur.split(":")
-                           const oldHour = preSplit[0]-0;
-                           const oldMin = preSplit[1]-0;
-                           const oldSecond = preSplit[2]-0;
-                           const curHour = curSplit[0]-0;
-                           const curMin = curSplit[1]-0;
-                           const curSecond = curSplit[2]-0;
-                           const newTime = "";
-                           const newSecond = (oldSecond+curSecond)%60;
-                           const newMin = (Math.floor((oldSecond+curSecond)/60)+oldMin+curMin)%60;
-                           const newHour = oldHour+curHour+(Math.floor(((Math.floor((oldSecond+curSecond)/60)+oldMin+curMin)/60)));
-                           return newTime.concat(newHour,":",newMin,":",newSecond);
-                       },"00:00:00")%>
-                            <tr>
-                                <th scope="row" colspan="6">Tổng số giờ làm: </th>
-                                <td><%=sumary%></td>
-                            </tr>
-                        </tbody>
-                    </table>          
-                    <%}%>
+<div class="container-fluid">
+  <div class="col-12">
+    <h3 class="text-center">Danh sách các lượt điểm danh</h3>
+  </div>
+  <div class="col-12">
+    <div class="container">
+      <div class="row">
+        <%for (const data in workingData) {%>
+        <%const sum = [];%>
+        <table class="table table-bordered">
+          <thead class="thead-dark thead-personal">
+            <tr>
+              <th scope="col">Ngày</th>
+              <th scope="col">Start</th>
+              <th scope="col">End</th>
+              <th scope="col">Địa điểm</th>
+              <th scope="col">Số giờ làm thêm</th>
+              <th scope="col">Nghỉ phép</th>
+              <th scope="col">Tổng giờ làm</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%workingData[data].forEach(date =>{ %>
+            <%sum.push(date.sumaryTime);%>
+            <%const timeWorking = date.timeEnd[1]-date.timeStart[1];%>
+            <tr>
+              <th scope="row"><%=date.timeStart[0]%></th>
+              <td><%=date.timeStart[1]%></td>
+              <td><%=date.timeEnd[1]%></td>
+              <td><%=date.location%></td>
+              <td><%=date.overTime%></td>
+              <td><%=date.annual%></td>
+              <td><%=date.sumaryTime%></td>
+            </tr>
+            <%})%>
+            <%const sumary = sum.reduce((pre,cur)=>{
+                const preSplit=pre.split(":")
+                const curSplit=cur.split(":")
+                const oldHour = preSplit[0]-0;
+                const oldMin = preSplit[1]-0;
+                const oldSecond = preSplit[2]-0;
+                const curHour = curSplit[0]-0;
+                const curMin = curSplit[1]-0;
+                const curSecond = curSplit[2]-0;
+                const newTime = "";
+                const newSecond = (oldSecond+curSecond)%60;
+                const newMin = (Math.floor((oldSecond+curSecond)/60)+oldMin+curMin)%60;
+                const newHour = oldHour+curHour+(Math.floor(((Math.floor((oldSecond+curSecond)/60)+oldMin+curMin)/60)));
+                return newTime.concat(newHour,":",newMin,":",newSecond);
+            },"00:00:00")%>
+            <tr>
+              <th scope="row" colspan="6">Tổng số giờ làm: </th>
+              <td><%=sumary%></td>
+            </tr>
+          </tbody>
+        </table>
+        <%}%>
             
         </div>
     </div>

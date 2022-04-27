@@ -18,15 +18,11 @@ router.get("/working-time/search", userController.getWorkingTimeSearchPage);
 
 router.get("/working-time/salary", userController.getSalarySearchPage);
 
-// router.get("/covid/temp-report", userController.getTempReportPage);
+router.post("/working-time/post-salary", userController.postSalarySearchPage);
 
 router.post("/covid/post-temp", userController.postTempReport);
 
-// router.get("/covid/covid-registered", userController.getCovidRegisteredPage);
-
 router.post("/covid/post-covid-registered", userController.postCovidRegistered);
-
-// router.get("/covid/vaccine", userController.getVaccinesPage);
 
 router.post("/covid/post-vaccine", userController.postVaccineInformation);
 

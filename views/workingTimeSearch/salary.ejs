@@ -1,3 +1,51 @@
 <%- include('../includes/head.ejs') %>
-   <h1>Salary</h1>
+<div class="page-title">
+  <h1 class="text-center">Bảng lương chi tiết</h1>
+</div>
+<hr>
+<div class="container">
+  <div class="row">
+   <h3 class="text-center">Tháng <%=month%> năm <%=year%></h3></div>
+    <div class="salary-table">
+      <table class="table table-bordered">
+          <thead class="thead-dark thead-personal">
+            <tr>
+              <th scope="col">Số thứ tự</th>
+              <th scope="col">Mục</th>
+              <th scope="col">Đơn vị</th>
+              <th scope="col">Số lượng</th>
+              <th scope="col">Thành tiền</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+               <td>1</td>
+               <td>Lương cơ bản</td>
+               <td><%=baseSalary%></td>
+               <td><%=user.salaryScale%></td>
+               <td><%=baseSalary*user.salaryScale%>
+            </tr>
+            <tr>
+               <td>2</td>
+               <td>Giờ làm thêm</td>
+               <td><%=overTimeSalary%></td>
+               <td><%=overTime%></td>
+               <td><%=overTimeSalary*overTime%>
+            </tr>
+            <tr>
+               <td>3</td>
+               <td>Giờ làm thiếu</td>
+               <td><%=overTimeSalary%></td>
+               <td><%=missingHour%></td>
+               <td><%=overTimeSalary*missingHour%>
+            </tr>
+            <tr>
+              <th scope="row" colspan="4">Tổng lương: </th>
+              <td><%=baseSalary*user.salaryScale + overTimeSalary*overTime + overTimeSalary*missingHour%></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 <%- include('../includes/footer.ejs') %>
